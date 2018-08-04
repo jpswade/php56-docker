@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:5.6
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306"
+    env_file: scripts/.env
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    restart: always
+    env_file: scripts/.env
+    volumes:
+      - ./:/var/www/html
+
+volumes:
+  db_data:
