@@ -15,3 +15,6 @@ push:
 
 bash:
 	docker run -it --entrypoint bash php56-docker
+
+exec:
+	docker-compose exec web bash
