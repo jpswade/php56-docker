@@ -3,6 +3,9 @@
 build:
 	docker build . -t php56-docker
 
+run:
+	docker run -d -p 80:80 --name my-laravel-app -v "$PWD":/var/www php56-docker
+
 up:
 	docker-compose up -d --build
 

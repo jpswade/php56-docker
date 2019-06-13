@@ -21,7 +21,7 @@ services:
     restart: always
     env_file: scripts/.env
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/
 
 volumes:
   db_data:

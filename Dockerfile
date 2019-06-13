@@ -28,16 +28,25 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install XDebug
 RUN (pecl install xdebug || pecl install xdebug-2.5.5) && docker-php-ext-enable xdebug
 
+
+ENV WORKDIR /var/www/
+
+# setup apache DocumentRoot.
+ENV APACHE_DOCUMENT_ROOT ${WORKDIR}/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
 # enable mod_rewrite
 RUN a2enmod rewrite
 
 # make the webroot a volume
-VOLUME /var/www/html/
+VOLUME ${WORKDIR}
+WORKDIR ${WORKDIR}
 
 # In images building upon this image, copy the src/ directory to the webserver
 # root and correct the owner.
-ONBUILD COPY / /var/www/html/
-ONBUILD RUN chown -R www-data:www-data /var/www/html
+ONBUILD COPY / ${WORKDIR}
+ONBUILD RUN chown -R www-data:www-data ${APACHE_DOCUMENT_ROOT}
 
 EXPOSE 80
 
