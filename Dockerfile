@@ -4,6 +4,7 @@ MAINTAINER James Wade <jpswade@gmail.com>
 # Install gd, iconv, mbstring, mcrypt, mysql, soap, sockets, zip, and zlib extensions
 # see example at https://hub.docker.com/_/php/
 RUN apt-get update && apt-get install -y \
+        git \
         libbz2-dev \
         libfreetype6-dev \
         libgd-dev \
