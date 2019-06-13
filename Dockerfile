@@ -20,7 +20,8 @@ RUN apt-get update \
     && docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
     && docker-php-ext-configure mysql --with-mysql=mysqlnd \
-    && docker-php-ext-install mysql
+    && docker-php-ext-install mysql \
+    && docker-php-ext-install pdo_mysql
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
