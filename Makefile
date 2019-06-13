@@ -9,3 +9,6 @@ up:
 push:
 	docker tag php56-docker jpswade/php56-docker
 	docker push jpswade/php56-docker
+
+bash:
+	docker run -it --entrypoint bash php56-docker
