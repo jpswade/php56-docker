@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure mysql --with-mysql=mysqlnd \
     && docker-php-ext-install mysql
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # enable mod_rewrite
 RUN a2enmod rewrite
 
