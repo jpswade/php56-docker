@@ -16,6 +16,9 @@ RUN apt-get update \
         libpng-dev \
         libxml2-dev \
         zlib1g-dev \
+        nc \
+        wget \
+        sudo \
     && docker-php-ext-install iconv mbstring mcrypt soap sockets zip \
     && docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
