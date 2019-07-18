@@ -16,7 +16,7 @@ RUN apt-get update \
         libpng-dev \
         libxml2-dev \
         zlib1g-dev \
-        nc \
+        netcat \
         wget \
         sudo \
     && docker-php-ext-install iconv mbstring mcrypt soap sockets zip \
