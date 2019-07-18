@@ -30,7 +30,7 @@ RUN apt-get update \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install XDebug
-RUN (pecl install xdebug || pecl install xdebug-2.5.5) && docker-php-ext-enable xdebug
+RUN (pecl install xdebug || pecl install xdebug-2.5.5)
 
 ENV WORKDIR /var/www/
 
