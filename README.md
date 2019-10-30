@@ -31,6 +31,11 @@ Docker Hub Login
 
 - `docker push jpswade/php56-docker`
 
+## Troubleshooting
+
+### The Xdebug extension is not loaded
+- `docker-php-ext-enable xdebug`
+
 ## Maintainer
 
 - [James Wade](https://wade.be/)
